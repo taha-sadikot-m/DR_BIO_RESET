@@ -35,7 +35,7 @@ const About: React.FC = () => {
                         <span>Reset. Rebuild. Rise.</span>
                     </div>
                     <h1 className="text-4xl md:text-6xl font-heading font-bold text-primary-navy mb-8 leading-tight">
-                        "What if your body could be upgraded—just like <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-teal to-secondary-wellness">software?</span>"
+                        "What if your body could be upgraded just like <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-teal to-secondary-wellness">software?</span>"
                     </h1>
                     <p className="text-lg text-gray-600 max-w-2xl mx-auto font-sans leading-relaxed">
                         This single question led Dr. Harshal Giri to create Dr BioReset. We don't just manage health; we optimize it for peak performance and longevity.
@@ -238,7 +238,16 @@ const About: React.FC = () => {
                     <div className="md:col-span-2 lg:col-span-1 bg-primary-navy rounded-[1.5rem] p-8 flex flex-col justify-center items-center text-center">
                          <h3 className="text-white font-bold text-xl mb-2 font-heading">Fully Personalized</h3>
                          <p className="text-gray-300 text-sm mb-6">Every protocol is personally overseen by Dr. Giri.</p>
-                         <Button variant="elite" size="sm">Start Your Reset</Button>
+                                                 <Button 
+                                                     variant="elite" 
+                                                     size="sm"
+                                                     onClick={() => {
+                                                         const msg = encodeURIComponent("Hi, I'd like to start my reset with Dr. BioReset.");
+                                                         window.location.href = `https://wa.me/918824000316?text=${msg}`;
+                                                     }}
+                                                 >
+                                                     Start Your Reset
+                                                 </Button>
                     </div>
                 </div>
             </div>

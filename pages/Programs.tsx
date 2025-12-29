@@ -57,7 +57,14 @@ const Programs: React.FC = () => {
       <Section pattern="navy" className="text-center py-20">
          <FadeInView>
              <h2 className="text-3xl font-heading font-bold text-white mb-6">Not sure where to start?</h2>
-             <Button variant="elite" icon={<ArrowRight className="w-4 h-4" />}>
+             <Button 
+               variant="elite" 
+               icon={<ArrowRight className="w-4 h-4" />} 
+               onClick={() => {
+                 const msg = encodeURIComponent("Hi, I'd like to book a discovery call about your programs.");
+                 window.location.href = `https://wa.me/918824000316?text=${msg}`;
+               }}
+             >
                  Book a Discovery Call
              </Button>
          </FadeInView>

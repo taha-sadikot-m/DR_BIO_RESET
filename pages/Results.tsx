@@ -100,9 +100,17 @@ const Results: React.FC = () => {
                 <div className="mt-20 text-center">
                      <FadeInView>
                         <h3 className="text-2xl font-heading font-bold text-primary-navy mb-6">Ready to write your own story?</h3>
-                        <Button variant="elite" size="lg" className="px-10 py-4 text-lg shadow-xl shadow-secondary-energy/20">
-                            Start Your Transformation
-                        </Button>
+                                                <Button 
+                                                    variant="elite" 
+                                                    size="lg" 
+                                                    className="px-10 py-4 text-lg shadow-xl shadow-secondary-energy/20"
+                                                    onClick={() => {
+                                                        const msg = encodeURIComponent("Hi, I'd like to start my transformation. Please share the next steps.");
+                                                        window.location.href = `https://wa.me/918824000316?text=${msg}`;
+                                                    }}
+                                                >
+                                                        Start Your Transformation
+                                                </Button>
                      </FadeInView>
                 </div>
            </div>

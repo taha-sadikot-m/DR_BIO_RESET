@@ -349,7 +349,7 @@ const Home: React.FC = () => {
               <Button variant="primary" size="lg" className="text-lg px-8 shadow-lg shadow-primary-teal/20" onClick={() => navigate('/programs/cxo-reset')}>
                 {HERO_CONTENT.ctaPrimary}
               </Button>
-              <Button variant="outline" size="lg" className="border-gray-300 text-gray-600 hover:text-primary-navy hover:border-primary-navy" onClick={() => navigate('/quiz')}>
+                <Button variant="outline" size="lg" className="border-gray-300 text-gray-600 hover:text-primary-navy hover:border-primary-navy" onClick={() => { window.location.href = 'https://drbioreset.involve.me/personal-wellness-intake-form'; }}>
                  {HERO_CONTENT.ctaSecondary}
               </Button>
             </div>
@@ -531,18 +531,38 @@ const Home: React.FC = () => {
       <Section pattern="grid" className="py-20 bg-gray-50">
          <div className="container mx-auto">
             <div className="text-center mb-16">
-               <h2 className="text-3xl font-heading font-bold text-primary-navy">Trusted by India's Top Founders</h2>
+              <h2 className="text-3xl font-heading font-bold text-primary-navy">Real People. Real Results.</h2>
             </div>
             <div className="grid md:grid-cols-3 gap-8">
-               {TESTIMONIALS.map((t, i) => (
-                 <BioMetricResultCard 
-                    key={t.id} 
-                    quote={t.quote}
-                    author={t.author}
-                    metric={t.metric}
-                    delay={i * 0.1}
-                 />
-               ))}
+              <BioMetricResultCard 
+                quote="I never thought diabetes could be reversed without medicine."
+                author="Meena S"
+                metric="HbA1c 6.4 -> 5.7"
+                image="/images/meena_s.jpeg"
+                delay={0}
+              />
+              <BioMetricResultCard 
+                quote="No medicine, no crazy workout, he gave some hacks."
+                author="Megha Rathore"
+                metric="Cycle Normalised"
+                image="/images/megha_rathore.jpeg"
+                delay={0.1}
+              />
+              <BioMetricResultCard 
+                quote="He’s less like a doctor and more like that one friend who knows exactly what your body needs."
+                author="Vaishnavi Suthar"
+                metric="Better Recovery | Energy High"
+                image="/images/vaishnavi_suthar.jpeg"
+                delay={0.2}
+              />
+            </div>
+            <div className="mt-10 flex justify-center">
+              <Button variant="outline" size="lg" className="border-gray-300 text-primary-navy hover:border-primary-teal hover:text-primary-teal" onClick={() => {
+                const msg = encodeURIComponent("Hi, can you share more client results?");
+                window.location.href = `https://wa.me/918824000316?text=${msg}`;
+              }}>
+                 View More Results
+              </Button>
             </div>
          </div>
       </Section>
@@ -560,7 +580,10 @@ const Home: React.FC = () => {
                "Reset your biology.<br/>Reclaim your edge."
              </h2>
              <div className="flex flex-col sm:flex-row justify-center gap-6">
-                <Button variant="elite" size="lg" className="px-12 py-5 text-xl shadow-xl shadow-secondary-energy/20" onClick={() => navigate('/programs/metabolic-reset')}>
+                <Button variant="elite" size="lg" className="px-12 py-5 text-xl shadow-xl shadow-secondary-energy/20" onClick={() => {
+                  const msg = encodeURIComponent("Hi, I'd like to join the Metabolic Reset Cohort. Please guide me through the next steps.");
+                  window.location.href = `https://wa.me/918824000316?text=${msg}`;
+                }}>
                    Join the Metabolic Reset Cohort
                 </Button>
              </div>

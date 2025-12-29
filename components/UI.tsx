@@ -283,8 +283,9 @@ export const BioMetricResultCard: React.FC<{
   quote: string, 
   author: string, 
   metric: string, 
-  delay?: number 
-}> = ({ quote, author, metric, delay = 0 }) => {
+  delay?: number,
+  image?: string
+}> = ({ quote, author, metric, delay = 0, image }) => {
   
   const numberMatch = metric.match(/[\d.-]+/);
   const metricValue = numberMatch ? numberMatch[0] : "";
@@ -302,7 +303,7 @@ export const BioMetricResultCard: React.FC<{
       <div className="relative z-10">
          <div className="mb-6">
             <div className="flex items-baseline">
-                <h3 className="text-5xl md:text-6xl font-heading font-bold text-primary-navy tracking-tighter group-hover:scale-105 transition-transform duration-500 origin-left">
+                <h3 className="text-5xl md:text-5xl font-heading font-bold text-primary-navy tracking-tighter group-hover:scale-105 transition-transform duration-500 origin-left">
                   {metricValue}
                 </h3>
                 <span className="ml-2 text-base md:text-lg font-bold text-primary-teal uppercase tracking-wider">
@@ -340,15 +341,28 @@ export const BioMetricResultCard: React.FC<{
          </p>
       </div>
 
-      <div className="relative z-10 mt-8 flex items-center gap-3">
-         <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary-teal to-secondary-wellness flex items-center justify-center text-white font-bold shadow-md">
-           {author.charAt(0)}
-         </div>
-         <div>
-           <p className="font-bold text-primary-navy text-sm">{author}</p>
-           <div className="flex items-center gap-1">
-             <div className="w-1.5 h-1.5 rounded-full bg-green-500"></div>
-             <p className="text-[10px] uppercase tracking-widest text-gray-400">Success Story</p>
+      <div className="relative z-10 mt-8">
+         {image ? (
+           <div className="mb-4 rounded-2xl border border-gray-100 shadow-lg bg-white overflow-hidden flex items-center justify-center">
+             <img 
+               src={image} 
+               alt={author}
+               className="max-h-56 w-full object-contain"
+             />
+           </div>
+         ) : null}
+         <div className="flex items-center gap-3">
+           {!image && (
+             <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary-teal to-secondary-wellness flex items-center justify-center text-white font-bold shadow-md">
+               {author.charAt(0)}
+             </div>
+           )}
+           <div>
+             <p className="font-bold text-primary-navy text-sm">{author}</p>
+             <div className="flex items-center gap-1">
+               <div className="w-1.5 h-1.5 rounded-full bg-green-500"></div>
+               <p className="text-[10px] uppercase tracking-widest text-gray-400">Success Story</p>
+             </div>
            </div>
          </div>
       </div>

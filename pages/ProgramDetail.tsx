@@ -78,11 +78,19 @@ const ProgramDetail: React.FC = () => {
                             </div>
                         </div>
 
-                        <div className="flex gap-4">
-                            <Button variant="elite" size="lg" className="px-8 shadow-xl shadow-secondary-energy/20">
-                                {program.cta} <ArrowRight className="w-4 h-4 ml-2" />
-                            </Button>
-                        </div>
+                                                <div className="flex gap-4">
+                                                        <Button 
+                                                            variant="elite" 
+                                                            size="lg" 
+                                                            className="px-8 shadow-xl shadow-secondary-energy/20"
+                                                            onClick={() => {
+                                                                const msg = encodeURIComponent(`Hi, I'm interested in ${program.title}. (${program.cta}) Please share details and next steps.`);
+                                                                window.location.href = `https://wa.me/918824000316?text=${msg}`;
+                                                            }}
+                                                        >
+                                                                {program.cta} <ArrowRight className="w-4 h-4 ml-2" />
+                                                        </Button>
+                                                </div>
                     </FadeInView>
                  </div>
              </div>
@@ -277,12 +285,28 @@ const ProgramDetail: React.FC = () => {
                     Join the top 1% of founders who have upgraded their operating system.
                 </p>
                 <div className="flex flex-col sm:flex-row justify-center gap-4">
-                     <Button variant="elite" size="lg" className="px-10 py-4 text-lg">
-                        Apply for Cohort
-                     </Button>
-                     <Button variant="outline" size="lg" className="px-10 py-4 text-lg">
-                        Book Consultation
-                     </Button>
+                                         <Button 
+                                             variant="elite" 
+                                             size="lg" 
+                                             className="px-10 py-4 text-lg"
+                                             onClick={() => {
+                                                 const msg = encodeURIComponent(`Hi, I'd like to apply for ${program.title}.`);
+                                                 window.location.href = `https://wa.me/918824000316?text=${msg}`;
+                                             }}
+                                         >
+                                                Apply for Cohort
+                                         </Button>
+                                         <Button 
+                                             variant="outline" 
+                                             size="lg" 
+                                             className="px-10 py-4 text-lg"
+                                             onClick={() => {
+                                                 const msg = encodeURIComponent(`Hi, I'd like to book a consultation regarding ${program.title}.`);
+                                                 window.location.href = `https://wa.me/918824000316?text=${msg}`;
+                                             }}
+                                         >
+                                                Book Consultation
+                                         </Button>
                 </div>
             </FadeInView>
         </Section>

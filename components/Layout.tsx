@@ -85,8 +85,8 @@ export const Navbar: React.FC = () => {
           })}
         </div>
 
-        <div className="hidden md:block">
-           <Button variant="elite" size="sm" onClick={() => navigate('/quiz')} className={`shadow-none hover:shadow-lg transition-all duration-500 ${isScrolled ? 'scale-95' : 'scale-100'}`}>
+          <div className="hidden md:block">
+            <Button variant="elite" size="sm" onClick={() => { window.location.href = 'https://drbioreset.involve.me/personal-wellness-intake-form'; }} className={`shadow-none hover:shadow-lg transition-all duration-500 ${isScrolled ? 'scale-95' : 'scale-100'}`}>
              Get Started
            </Button>
         </div>
@@ -114,7 +114,7 @@ export const Navbar: React.FC = () => {
           ))}
           <Button variant="elite" className="w-full mt-4 text-lg" onClick={() => {
               setMobileMenuOpen(false);
-              navigate('/quiz');
+              window.location.href = 'https://drbioreset.involve.me/personal-wellness-intake-form';
           }}>
             Take Reversal Quiz
           </Button>
@@ -183,7 +183,15 @@ export const Footer: React.FC = () => {
                 WhatsApp Support
               </li>
               <li>
-                <Button variant="outline" size="sm" className="mt-6 w-full border-primary-navy/10 text-primary-navy hover:bg-primary-navy hover:text-white hover:border-primary-navy">
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  className="mt-6 w-full border-primary-navy/10 text-primary-navy hover:bg-primary-navy hover:text-white hover:border-primary-navy"
+                  onClick={() => {
+                    const msg = encodeURIComponent("Hi, I'd like to book a discovery call about your programs.");
+                    window.location.href = `https://wa.me/918824000316?text=${msg}`;
+                  }}
+                >
                   Book Discovery Call
                 </Button>
               </li>
@@ -195,7 +203,13 @@ export const Footer: React.FC = () => {
           <p className="text-gray-500 text-xs">
             © 2025 Dr. BioReset by Dr. Harshal Giri. All Rights Reserved.
           </p>
-          <div className="flex items-center gap-2 text-secondary-energy text-sm font-semibold cursor-pointer group bg-secondary-energy/10 px-4 py-2 rounded-full border border-secondary-energy/20 hover:bg-secondary-energy/20 transition-colors">
+          <div 
+            className="flex items-center gap-2 text-secondary-energy text-sm font-semibold cursor-pointer group bg-secondary-energy/10 px-4 py-2 rounded-full border border-secondary-energy/20 hover:bg-secondary-energy/20 transition-colors"
+            onClick={() => {
+              const msg = encodeURIComponent("Hi, I'd like to learn how to join the reversal revolution.");
+              window.location.href = `https://wa.me/918824000316?text=${msg}`;
+            }}
+          >
             Join India's Reversal Revolution <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </div>
         </div>
