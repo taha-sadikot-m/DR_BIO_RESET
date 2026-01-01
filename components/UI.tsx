@@ -303,7 +303,7 @@ export const BioMetricResultCard: React.FC<{
       <div className="relative z-10">
          <div className="mb-6">
             <div className="flex items-baseline">
-                <h3 className="text-5xl md:text-5xl font-heading font-bold text-primary-navy tracking-tighter group-hover:scale-105 transition-transform duration-500 origin-left">
+                <h3 className="text-5xl md:text-5xl font -heading font-bold text-primary-navy tracking-tighter group-hover:scale-105 transition-transform duration-500 origin-left">
                   {metricValue}
                 </h3>
                 <span className="ml-2 text-base md:text-lg font-bold text-primary-teal uppercase tracking-wider">

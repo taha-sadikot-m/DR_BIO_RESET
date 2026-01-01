@@ -28,7 +28,7 @@ export const Navbar: React.FC = () => {
   // Determine nav styling based on state
   // Enhanced transitions: changed py-2 to py-3 for better aesthetics, adjusted opacity
   const navClasses = mobileMenuOpen 
-    ? 'bg-transparent border-transparent py-5' 
+    ? 'bg-primary-navy border-transparent py-5' 
     : isScrolled 
       ? 'bg-white/95 backdrop-blur-md border-primary-navy/5 py-3 shadow-sm' 
       : 'bg-transparent border-transparent py-6';
@@ -46,13 +46,13 @@ export const Navbar: React.FC = () => {
   const logoTextClass = mobileMenuOpen 
     ? 'text-white' 
     : 'text-primary-navy';
-      
+
   const hamburgerClass = mobileMenuOpen
     ? 'text-white bg-white/10'
     : 'text-primary-navy bg-primary-navy/5';
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-500 ease-in-out border-b ${navClasses}`}>
+    <nav className={`fixed w-full z-50 ${mobileMenuOpen ? 'transition-none' : 'transition-all duration-500 ease-in-out'} border-b ${navClasses}`}>
       <div className="container mx-auto px-6 flex justify-between items-center relative z-50">
         {/* Logo Area */}
         <div 
@@ -61,7 +61,7 @@ export const Navbar: React.FC = () => {
         >
           
           <img 
-    src="/images/logo.png" 
+    src="/images/logo_transparent.png" 
     alt="Dr. BioReset Logo" 
     className="h-12 w-auto transition-all duration-500 group-hover:scale-110"
   />  
@@ -100,8 +100,26 @@ export const Navbar: React.FC = () => {
         </button>
       </div>
 
-      {/* Mobile Menu Overlay */}
-      <div className={`fixed inset-0 bg-primary-navy z-40 transition-transform duration-500 ease-in-out md:hidden flex flex-col pt-32 px-6 gap-6 ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+      {/* Mobile Menu - Background Backdrop (Fades in quickly) */}
+      <div className={`fixed inset-0 bg-primary-navy z-[60] transition-opacity duration-200 ease-out md:hidden ${mobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`} />
+      
+      {/* Mobile Menu - Content Layer (Slides in smoothly) */}
+      <div className={`fixed inset-0 z-[70] md:hidden flex flex-col pt-20 px-6 gap-8 transition-all duration-400 ease-in-out ${mobileMenuOpen ? 'translate-x-0 opacity-100 pointer-events-auto' : 'translate-x-full opacity-0 pointer-events-none'}`}>
+          <div className="flex items-center justify-between">
+            <img 
+              src="/images/logo_white_color.png" 
+              alt="Dr. BioReset Logo" 
+              className="h-12 w-auto"
+            />
+            <button
+              aria-label="Close menu"
+              className="p-2 rounded-lg bg-white/10 text-white hover:bg-white/15 transition-colors"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <X className="w-6 h-6" />
+            </button>
+          </div>
+
           {NAV_LINKS.map((link) => (
             <Link
               key={link.path}
@@ -132,7 +150,7 @@ export const Footer: React.FC = () => {
           <div className="col-span-1 md:col-span-1">
              <div className="flex items-center gap-2 mb-6">
               <img 
-    src="/images/logo.png" 
+    src="/images/logo_transparent.png" 
     alt="Dr. BioReset Logo" 
     className="h-12 w-auto transition-all duration-500 group-hover:scale-110"
   />  
