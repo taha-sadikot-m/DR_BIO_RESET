@@ -3,6 +3,9 @@ import { motion } from 'framer-motion';
 import { Section, FadeInView, AccordionItem, Button } from '../components/UI';
 import { BLOG_CATEGORIES, FEATURED_GUIDES, FAQS } from '../constants';
 import { Search, BookOpen, FileText, Download, ChevronRight, ArrowRight } from 'lucide-react';
+import SEO from '../components/SEO';
+import { getSEOConfig } from '../utils/seo-config';
+import { getFAQSchema } from '../utils/structured-data';
 
 const ResearchModuleCard: React.FC<{ title: string, icon: React.ElementType, count: number, index: number }> = ({ title, icon: Icon, count, index }) => (
   <motion.div
@@ -56,8 +59,13 @@ const ProtocolManualCard: React.FC<{ title: string, type: string, index: number 
 );
 
 const Learn: React.FC = () => {
+  const seoConfig = getSEOConfig('learn');
+  const faqSchema = getFAQSchema(FAQS.map(faq => ({ question: faq.question, answer: faq.answer })));
+
   return (
-    <div className="bg-white pt-20">
+    <>
+      <SEO config={seoConfig} structuredData={faqSchema} />
+      <div className="bg-white pt-20">
        
        {/* HERO SECTION - DIGITAL LIBRARY */}
        <Section pattern="grid" className="pt-12 md:pt-16 pb-20">
@@ -167,7 +175,8 @@ const Learn: React.FC = () => {
              </div>
           </div>
        </Section>
-    </div>
+      </div>
+    </>
   );
 };
 

@@ -4,6 +4,9 @@ import { motion } from 'framer-motion';
 import { Section, FadeInView, Button } from '../components/UI';
 import { FOUNDER_CREDENTIALS, CELEBRITY_CLIENTS, BIORESET_METHOD_PILLARS } from '../constants';
 import { Dna, Heart, ShieldCheck, Zap, Play, Users, Target, Microscope, Globe, ArrowRight, Quote, Trophy, Star, CheckCircle } from 'lucide-react';
+import SEO from '../components/SEO';
+import { getSEOConfig } from '../utils/seo-config';
+import { getDoctorSchema } from '../utils/structured-data';
 
 const MethodCard: React.FC<{ icon: React.ElementType, title: string, desc: string, delay: number }> = ({ icon: Icon, title, desc, delay }) => (
   <motion.div
@@ -24,8 +27,13 @@ const MethodCard: React.FC<{ icon: React.ElementType, title: string, desc: strin
 );
 
 const About: React.FC = () => {
+  const seoConfig = getSEOConfig('about');
+  const structuredData = getDoctorSchema();
+
   return (
-    <div className="bg-white pt-20">
+    <>
+      <SEO config={seoConfig} structuredData={structuredData} />
+      <div className="bg-white pt-20">
         {/* HEADER SECTION - THE HOOK */}
         <Section pattern="light" className="pt-24 pb-12">
             <div className="text-center max-w-4xl mx-auto px-4">
@@ -265,7 +273,8 @@ const About: React.FC = () => {
                  </FadeInView>
              </div>
         </Section>
-    </div>
+      </div>
+    </>
   );
 };
 

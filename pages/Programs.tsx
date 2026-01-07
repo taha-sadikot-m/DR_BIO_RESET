@@ -5,12 +5,17 @@ import { useNavigate } from 'react-router-dom';
 import { Section, FadeInView, ProgramCapsule, Button } from '../components/UI';
 import { PROGRAMS } from '../constants';
 import { Clock, CheckCircle, ClipboardList, ArrowRight } from 'lucide-react';
+import SEO from '../components/SEO';
+import { getSEOConfig } from '../utils/seo-config';
 
 const Programs: React.FC = () => {
   const navigate = useNavigate();
+  const seoConfig = getSEOConfig('programs');
 
   return (
-    <div className="bg-white pt-20">
+    <>
+      <SEO config={seoConfig} />
+      <div className="bg-white pt-20">
       {/* HERO */}
       <Section pattern="light" className="pb-12 pt-16">
         <div className="text-center max-w-4xl mx-auto">
@@ -69,7 +74,9 @@ const Programs: React.FC = () => {
              </Button>
          </FadeInView>
       </Section>
-    </div>
+      </div>
+    </>
+
   );
 };
 

@@ -9,6 +9,9 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { Button, Section, FadeInView, ProblemCapsule, ProgramCapsule, BioMetricResultCard, ImpactMetricCard } from '../components/UI';
 import { PROGRAMS, TESTIMONIALS, HERO_CONTENT, TRUST_METRICS, SOLUTION_STEPS, BUSINESS_IMPACT_DATA } from '../constants';
+import SEO from '../components/SEO';
+import { getSEOConfig, ORGANIZATION_SCHEMA } from '../utils/seo-config';
+import { combineSchemas, getDoctorSchema } from '../utils/structured-data';
 
 // --- Hero DNA Visuals ---
 const DNARow: React.FC<{ index: number }> = ({ index }) => {
@@ -312,8 +315,13 @@ const Home: React.FC = () => {
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
   const navigate = useNavigate();
 
+  const seoConfig = getSEOConfig('home');
+  const structuredData = combineSchemas(ORGANIZATION_SCHEMA, getDoctorSchema());
+
   return (
-    <div className="overflow-x-hidden bg-white font-sans selection:bg-primary-teal/20 selection:text-primary-navy">
+    <>
+      <SEO config={seoConfig} structuredData={structuredData} />
+      <div className="overflow-x-hidden bg-white font-sans selection:bg-primary-teal/20 selection:text-primary-navy">
       
       {/* HERO SECTION */}
       <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
@@ -590,8 +598,10 @@ const Home: React.FC = () => {
            </motion.div>
          </div>
       </Section>
-    </div>
+      </div>
+    </>
   );
 };
+
 
 export default Home;

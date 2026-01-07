@@ -159,11 +159,22 @@ export const Footer: React.FC = () => {
               India’s leading data-driven metabolic reversal clinic. We don't guess with your health; we biohack it back to perfection.
             </p>
             <div className="flex gap-4">
-              {[Instagram, Facebook, Youtube, Linkedin].map((Icon, i) => (
-                <div key={i} className="w-10 h-10 rounded-full bg-primary-navy/5 flex items-center justify-center hover:bg-secondary-energy hover:text-white transition-all cursor-pointer text-gray-500">
-                  <Icon className="w-5 h-5" />
-                </div>
-              ))}
+              <a 
+                href="https://www.instagram.com/drbioresetofficial?igsh=MXZ4Z3lzeHVuMzBvdA%3D%3D&utm_source=qr" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-primary-navy/5 flex items-center justify-center hover:bg-secondary-energy hover:text-white transition-all cursor-pointer text-gray-500"
+              >
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a 
+                href="https://www.linkedin.com/company/the-health-reset/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-primary-navy/5 flex items-center justify-center hover:bg-secondary-energy hover:text-white transition-all cursor-pointer text-gray-500"
+              >
+                <Linkedin className="w-5 h-5" />
+              </a>
             </div>
           </div>
 

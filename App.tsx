@@ -1,5 +1,6 @@
 import React from 'react';
-import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import { Navbar, Footer } from './components/Layout';
 import Home from './pages/Home';
 import Programs from './pages/Programs';
@@ -17,31 +18,33 @@ const PlaceholderPage = ({ title }: { title: string }) => (
     </p>
     <div className="mt-12 p-8 bg-white rounded-xl shadow-md max-w-md mx-auto">
        <p className="font-bold text-primary-teal mb-2">Want to get started?</p>
-       <a href="#/" className="text-secondary-wellness underline">Return to Home</a>
+       <a href="/" className="text-secondary-wellness underline">Return to Home</a>
     </div>
   </div>
 );
 
 const App: React.FC = () => {
   return (
-    <HashRouter>
-      <div className="min-h-screen flex flex-col bg-white">
-        <Navbar />
-        <main className="flex-grow">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/programs" element={<Programs />} />
-            <Route path="/programs/:id" element={<ProgramDetail />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/results" element={<Results />} />
-            <Route path="/learn" element={<Learn />} />
-            <Route path="/quiz" element={<PlaceholderPage title="Health Reversal Quiz" />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </HashRouter>
+    <HelmetProvider>
+      <BrowserRouter>
+        <div className="min-h-screen flex flex-col bg-white">
+          <Navbar />
+          <main className="flex-grow">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/programs" element={<Programs />} />
+              <Route path="/programs/:id" element={<ProgramDetail />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/results" element={<Results />} />
+              <Route path="/learn" element={<Learn />} />
+              <Route path="/quiz" element={<PlaceholderPage title="Health Reversal Quiz" />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </BrowserRouter>
+    </HelmetProvider>
   );
 };
 

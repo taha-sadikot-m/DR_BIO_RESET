@@ -3,10 +3,19 @@ import React from 'react';
 import { Section, FadeInView, DetailedTestimonialCard, Button } from '../components/UI';
 import { ALL_TESTIMONIALS } from '../constants';
 import { Play, Star, Trophy, ArrowRight } from 'lucide-react';
+import SEO from '../components/SEO';
+import { getSEOConfig } from '../utils/seo-config';
+import { getReviewSchema } from '../utils/structured-data';
 
 const Results: React.FC = () => {
   const videoRef = React.useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = React.useState(false);
+  const seoConfig = getSEOConfig('results');
+  const reviewSchema = getReviewSchema(ALL_TESTIMONIALS.slice(0, 10).map(t => ({
+    author: t.name,
+    rating: 5,
+    reviewBody: t.quote
+  })));
 
   const togglePlay = () => {
     if (videoRef.current) {
@@ -20,7 +29,9 @@ const Results: React.FC = () => {
   };
 
   return (
-    <div className="bg-white pt-20">
+    <>
+      <SEO config={seoConfig} structuredData={reviewSchema} />
+      <div className="bg-white pt-20">
        {/* HERO */}
        <Section pattern="grid" className="pt-16 pb-12 bg-gray-50/50">
            <div className="text-center max-w-4xl mx-auto">
@@ -115,7 +126,8 @@ const Results: React.FC = () => {
                 </div>
            </div>
        </Section>
-    </div>
+      </div>
+    </>
   );
 };
 

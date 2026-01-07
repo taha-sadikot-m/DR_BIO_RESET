@@ -5,6 +5,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { PROGRAMS } from '../constants';
 import { Section, FadeInView, Button, CurriculumCard, ImpactMetricCard } from '../components/UI';
 import { CheckCircle, Clock, Calendar, ShieldCheck, ArrowRight, Brain, Battery, Briefcase, Zap, Map, ChevronRight, PlayCircle } from 'lucide-react';
+import SEO from '../components/SEO';
+import { getSEOConfig } from '../utils/seo-config';
+import { PROGRAM_SCHEMAS } from '../utils/structured-data';
 
 const ProgramDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -21,6 +24,11 @@ const ProgramDetail: React.FC = () => {
   if (!program) {
     return <Navigate to="/programs" replace />;
   }
+
+  // Get SEO config based on program ID
+  const seoConfigKey = `programs-${id}`;
+  const seoConfig = getSEOConfig(seoConfigKey);
+  const structuredData = PROGRAM_SCHEMAS[id || ''];
 
   // Smooth scroll handler for the roadmap navigation
   const handlePhaseClick = (index: number) => {
@@ -41,7 +49,9 @@ const ProgramDetail: React.FC = () => {
   };
 
   return (
-    <div className="bg-white pt-20">
+    <>
+      <SEO config={seoConfig} structuredData={structuredData} />
+      <div className="bg-white pt-20">
         {/* HERO SECTION */}
         <div className="relative min-h-[70vh] flex items-center bg-primary-navy text-white overflow-hidden">
              {/* Background Image with Overlay */}
@@ -310,7 +320,8 @@ const ProgramDetail: React.FC = () => {
                 </div>
             </FadeInView>
         </Section>
-    </div>
+      </div>
+    </>
   );
 };
 
